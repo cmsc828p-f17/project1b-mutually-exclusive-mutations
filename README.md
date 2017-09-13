@@ -1,4 +1,4 @@
-# Project1b: Mutually Exclusive Mutations
+# Project 1b: Mutually Exclusive Mutations
 
 For this project, you will implement and run the Markov chain Monte Carlo algorithm from [Vandin, et al. (Genome Research, 2012)](http://genome.cshlp.org/content/22/2/375.full).
 
