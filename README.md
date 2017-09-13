@@ -8,7 +8,7 @@ The input data for your algorithm is a binary mutation matrix. The mutation matr
 
 #### Example data
 
-You can find example data for your project in [data/examples](https://github.com/cmsc828p-f17/project1a-mutation-signatures/blob/master/data/examples).
+You can find example data for your project in [data/examples](https://github.com/cmsc828p-f17/project1b-mutually-exclusive-mutations/blob/master/data/examples).
 
 
 #### Real data
