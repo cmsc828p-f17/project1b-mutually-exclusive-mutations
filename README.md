@@ -8,8 +8,7 @@ The input data for your algorithm is a binary mutation matrix. The mutation matr
 
 #### Example data
 
-You can find example data for your project in [data/examples](https://github.com/cmsc828p-f17/project1b-mutually-exclusive-mutations/blob/master/data/examples).
-
+You can find a small example dataset for your project in [data/examples](https://github.com/cmsc828p-f17/project1b-mutually-exclusive-mutations/blob/master/data/examples). When run on this example dataset, your program should identify the implanted set of four "genes" (Gene-1, Gene-2, Gene-3, Gene-4) with significantly mutually exclusive mutations.
 
 #### Real data
 
