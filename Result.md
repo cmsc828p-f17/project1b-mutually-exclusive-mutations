@@ -1,6 +1,6 @@
-All the experiments are run with MCMC iterations = 100000 
+# All the experiments are run with MCMC iterations = 100000 
 
-#Simulated data with genes set size = 4
+## Simulated data with genes set size = 4
 
 Gene-4  Gene-2  Gene-3  Gene-1  2684
 Gene-4  Gene-5  Gene-2  Gene-1  1904
@@ -14,7 +14,7 @@ Gene-15 Gene-4  Gene-2  Gene-3  797
 Gene-4  Gene-2  Gene-3  Gene-19 797
 Gene-4  Gene-1  Gene-2  Gene-13 787
 
-#Lung cancer data with gene set size = 2
+## Lung cancer data with gene set size = 2
 
 EGFR    KRAS    508
 STK11   TP53    16
@@ -31,7 +31,7 @@ TP53    MAPK7   4
 TP53    FYN     3
 PCTK2   KRAS    3
 
-#Lung cancer data with gene set size = 3
+## Lung cancer data with gene set size = 3
 
 STK11   EGFR    KRAS    134
 EPHB1   EGFR    KRAS    111
