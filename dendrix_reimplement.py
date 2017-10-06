@@ -41,7 +41,7 @@ Stores information as:
 genes: all unique genes
 patients: all unique patients
 patients2genes: patient to mutated genes mapping
-genes2patients: genes to patients in which that gene is mutated mapping 
+genes2patients: genes to patients in which that gene is mutated mapping
 '''
 def read_matrix(name):
     with open(name,'r') as f:
@@ -60,7 +60,7 @@ def read_matrix(name):
 '''
 Standalone MCMC function, that takes following arguments:
 patients2genes: patient to mutated genes mapping
-genes2patients: genes to patients in which that gene is mutated mapping 
+genes2patients: genes to patients in which that gene is mutated mapping
 iterations: Number of iterations for MCMC
 k: gene set size
 weight_cutoff: weight being tested in case of the permutation test
@@ -68,7 +68,7 @@ weight_cutoff: weight being tested in case of the permutation test
 def MCMC(patient2genes_sample,genes2patients_sample,iterations,k,weight_cutoff=0):
     '''
     Initial gene set
-    '''    
+    '''
     curr_answer = set(random.sample(genes,k))
     solution_map = {}
     solution_map_all = {}
@@ -105,19 +105,17 @@ def MCMC(patient2genes_sample,genes2patients_sample,iterations,k,weight_cutoff=0
         if samp_prob < P:
             curr_answer = to_test
             curr_weight = weight(curr_answer,patient2genes,genes2patients)
+            #print curr_weight,weight_cutoff
+            if frozenset(curr_answer) not in solution_map:
+                solution_map[frozenset(curr_answer)] = 0
+            solution_map[frozenset(curr_answer)] += 1
+
             if curr_weight >= weight_cutoff:
-                if frozenset(curr_answer) not in solution_map:
-                    solution_map[frozenset(curr_answer)] = 0
-                
-                '''
-                Count the number of times a set is visited
-                '''
-                solution_map[frozenset(curr_answer)] += 1
-            fset = frozenset(curr_answer)
-            if fset not in solution_map_all:
-                solution_map_all[fset] = 0
-            solution_map_all[fset] += 1
-    
+                fset = frozenset(curr_answer)
+                if fset not in solution_map_all:
+                    solution_map_all[fset] = 0
+                solution_map_all[fset] += 1
+
 
     return solution_map,solution_map_all
 
@@ -128,7 +126,7 @@ def permutation_test(rounds,weight_cutoff,k,rank,iterations):
     for i in xrange(0,rounds):
         '''
         Randomly permute the patients for each mutated genes, keeping the number of patients same
-        Also compute other data structure based on this 
+        Also compute other data structure based on this
         '''
         patient2genes_sample = {}
         genes2patients_sample = {}
@@ -143,7 +141,7 @@ def permutation_test(rounds,weight_cutoff,k,rank,iterations):
         '''
         Call MCMC function
         '''
-        solution_map,_ = MCMC(patient2genes,genes2patients,iterations,k,weight_cutoff)
+        _,solution_map = MCMC(patient2genes,genes2patients,iterations,k,weight_cutoff)
 
         '''
         Counts the number of time the set has higher weight than the rank being tested
@@ -151,7 +149,7 @@ def permutation_test(rounds,weight_cutoff,k,rank,iterations):
         if sum(solution_map.values()) >= rank:
             consider += 1
 
-        
+
 
     pvalue = consider*1.0/rounds
     # print "PValue for the permutation test = " + str(pvalue)
@@ -196,7 +194,7 @@ def main():
     '''
     Call MCMC function
     '''
-    _,solutions_visited = MCMC(patient2genes,genes2patients,iterations,k)
+    solutions_visited,_ = MCMC(patient2genes,genes2patients,iterations,k)
 
 
     sorted_solutions_visited = sorted(solutions_visited.items(),key=operator.itemgetter(1),reverse=True)
@@ -238,19 +236,21 @@ def main():
     Output permutation test results for gene sets
     Foramat: Gene set, weight, sampling frequency, p-value
     '''
-    ofile = open(args.prefix+'_'+str(k)+'_stats.txt','w',1)
+    ofile = open(args.prefix+'_'+str(k)+'_stats.txt','w')
     rnk = 1
     for key in sorted_solutions_weights:
-        if rnk <= 20:
-            print 'set with rank '+ str(rnk) + ' testing!'
-            pvalue = permutation_test(1000,key[1],k,rnk,iterations)
+        if rnk <= 5:
+            #print 'set with rank '+ str(rnk) + ' testing!'
+            pvalue = permutation_test(100,key[1],k,rnk,iterations)
             line = ''
             for each in key[0]:
                 line += each+'\t'
             line += str(key[1])+'\t'
+            #print pvalue
             line += str(solutions_visited[key[0]])+'\t'+str(pvalue)+'\n'
             ofile.write(line)
-            print 'set with rank '+ str(rnk) + ' done!'
+            #print 'set with rank '+ str(rnk) + ' done!'
+            print line.strip()
             rnk += 1
         else:
             break
