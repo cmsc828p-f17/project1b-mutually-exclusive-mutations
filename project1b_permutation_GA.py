@@ -209,7 +209,7 @@ if __name__ == "__main__":
     # of a solution with high weight if seen in a lot of iterations
     empirical_pvalue = float(runs_greaterweight/numruns)
     # writing to output file
-    out_perm = open('permutationtest_weight'+str(testweight)+'_rank'+str(rank)+'.txt','w')
+    out_perm = open('permutationtest_weight'+str(testweight)+'_rank'+str(rank)+'_iter'+str(numiter)+'.txt','w')
     out_perm.write('Weight\t'+str(testweight)+'\tRank\t'+str(rank)+'\tNumber of Runs\t'+str(numruns)+'\n')
     out_perm.write('P-value:\t'+str(empirical_pvalue)+'\n')
     out_perm.close()

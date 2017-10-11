@@ -75,7 +75,7 @@ if __name__ == "__main__":
     # creating sets/dictionaries to use later
     genes_setexamples = dict()
     examples_setgenes = dict()
-    numvisits = dict()
+    
     # examples list is meant for the permutation test for later to randomly sample, doing it now for copy and paste purposes
     exampleslist = set()
     # this is used for both to create random sample
@@ -103,19 +103,24 @@ if __name__ == "__main__":
                 geneslist.add(gene)
                 
             genes_setexamples[gene].add(samplepatient)
+    
+    print(len(geneslist))
         # end of i
     # end of example        
     mutationdata.close()
+    
+    
 # run the Metroplis-Hasting experiment
     random.seed()
 # setting c =-0.5 like they empirically found in the paper
     c = 0.5
 # for loop over the number of runs you want to do
-   # print(len(geneslist))
+   
     for runs in range(numruns):
     # randomly select a sample to start with
         state = random.sample(geneslist, setsize)
         state = set(state)
+        numvisits = dict()
     # for loop for number of iterations
         for ii in range(numiter):
     
@@ -155,6 +160,9 @@ if __name__ == "__main__":
                 if frzstate not in numvisits:
                     numvisits[frzstate] = 0
                 numvisits[frzstate] += 1
+            
+            if ii % 100000 == 0 :
+                print('Iter %s' % str(ii))
         
     # end for loop for iterations
     
@@ -173,7 +181,11 @@ if __name__ == "__main__":
         sorted_visits.sort()
     # write to file
         out_mostvisit = open('highestfreq_genesets_run'+str(runs)+'.txt','w')
-        out_mostvisit.write('Top 1000 sets with highest frequency seen during simulation, number_visits set_of_genes state_weight \n')
+        out_mostvisit.write('Top 10 sets with highest frequency seen during simulation, number_visits set_of_genes state_weight \n')
+        out_mostvisit.write('Lung cancer data, setsize = '+str(setsize)+' \n')
+       # out_mostvisit.write('Simulation data, setsize = '+str(setsize)+' \n')
+       # out_mostvisit.write('Pan-cancer data, setsize = '+str(setsize)+' \n')
+       # out_mostvisit.write('Glioblastoma data, setsize = '+str(setsize)+' \n')
         for i in range(len(sorted_visits)):
 #             if i < 1000:
 #                out_mostvisit.write([str(sorted_visits[(-i-1)][0])+'\t']) 
@@ -187,7 +199,7 @@ if __name__ == "__main__":
 
              # creating weight function value for each set, to be used for sorting by weight later                
              stateweight = weight(gene_sort)
-             if i < 1000:
+             if i < 10:
                  # frequency
                  out_mostvisit.write(str(sorted_visits[(-i-1)][0])+'\t')
                  # genes
