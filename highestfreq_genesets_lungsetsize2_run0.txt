@@ -1,0 +1,5 @@
+Top 10 sets with highest frequency seen during simulation, number_visits set_of_genes state_weight 
+Lung cancer data, setsize = 2 
+998	EGFR	KRAS	90.0
+1	ATM	TP53	75.0
+1	KRAS	TP53	76.0

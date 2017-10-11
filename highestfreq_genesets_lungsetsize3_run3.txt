@@ -1,0 +1,12 @@
+Top 10 sets with highest frequency seen during simulation, number_visits set_of_genes state_weight 
+Lung cancer data, setsize = 3 
+56	EGFR	KRAS	STK11	96.0
+18	EGFR	EPHB1	KRAS	94.0
+16	EGFR	KRAS	MAP3K3	93.0
+16	EGFR	KRAS	PFTK1	93.0
+14	EGFR	KRAS	PRKCG	94.0
+12	EGFR	JUP	KRAS	92.0
+11	EGFR	KRAS	NF1	93.0
+10	BRCA2	EGFR	KRAS	92.0
+10	EGFR	KRAS	NTRK3	93.0
+10	EGFR	KRAS	NRAS	93.0

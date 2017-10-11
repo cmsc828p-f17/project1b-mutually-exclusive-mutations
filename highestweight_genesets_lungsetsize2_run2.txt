@@ -1,0 +1,4 @@
+Top 1000 sets with highest weight seen during simulation, state_weights set_of_genes number_visits 
+90.0	EGFR	KRAS	997
+76.0	KRAS	TP53	2
+61.0	KRAS	PASK	1

@@ -1,0 +1,2 @@
+Weight	96	Rank	1	Number of Runs	100
+P-value:	0.01
