@@ -1,0 +1,12 @@
+Top 10 sets with highest frequency seen during simulation, number_visits set_of_genes state_weight 
+Lung cancer data, setsize = 3 
+323	Gene-1	Gene-2	Gene-4	45.0
+313	Gene-2	Gene-3	Gene-4	45.0
+35	Gene-1	Gene-2	Gene-5	40.0
+32	Gene-2	Gene-4	Gene-5	40.0
+24	Gene-1	Gene-3	Gene-4	39.0
+23	Gene-2	Gene-3	Gene-5	40.0
+16	Gene-3	Gene-4	Gene-8	39.0
+15	Gene-18	Gene-2	Gene-4	39.0
+14	Gene-1	Gene-2	Gene-3	37.0
+13	Gene-18	Gene-3	Gene-4	37.0

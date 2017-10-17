@@ -1,0 +1,2 @@
+Weight	94	Rank	3	Number of Runs	1000
+P-value:	0.014
